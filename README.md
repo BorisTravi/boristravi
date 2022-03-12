@@ -19,9 +19,40 @@ Prueba diseñada para ver tus habilidades en el mundo DevOps. Se evaluará las h
 **Importante**    
 > Documentar correctamente el proceso es muy importante para asegurar que el equipo pueda continuar con las tareas de ser necesario. 
 
-## Bonus
-* Imagen docker pequeña
-* Ejecutar con un usuario distinto a root
-* Que el pipeline ejecute los tests antes de hacer build
-* Usar Forever o PM2
+## Documentacion:
+* Crear un archivo Dockerfile dentro de la raiz.
+* En la primera Linea del archivo Dockerfile escribir siguiente codigo para crear la imagen:
+
+  - FROM node.  -- > crear la imagen NODE
+  - WORKDIR /usr/src/app ---> ubicacion en donde se va ejecutar
+  - COPY package.json .  ---> copia el archivo json
+  - RUN npm install. --> instala node
+
+  - COPY . . ----> copia 
+
+  - EXPOSE 8060  ---> se numera el puerto
+  - CMD [ "npm", "start" ]
+
+* docker build -t <prefijo o usuario>/node-web-app .
+* docker images
+* docker run -p 80:8060 -d <usuario>/node-web-app
+* curl -i 80:8060
+ 
+ 
+* Se crea un archivo jenkinsfile con el siguente codigo para crear un pipeline con una imagen Docker
+
+-pipeline {
+-   agent {
+        docker { image 'node:16.13.1-alpine' }
+-  }
+- stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
+}
+
+
 
