@@ -19,7 +19,7 @@ Prueba diseñada para ver tus habilidades en el mundo DevOps. Se evaluará las h
 **Importante**    
 > Documentar correctamente el proceso es muy importante para asegurar que el equipo pueda continuar con las tareas de ser necesario. 
 
-## Documentacion:
+# Documentacion:
 * Crear un archivo Dockerfile dentro de la raiz.
 * En la primera Linea del archivo Dockerfile escribir siguiente codigo para crear la imagen:
 
